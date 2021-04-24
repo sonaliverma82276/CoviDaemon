@@ -47,16 +47,16 @@
           var temp = "";
           data = data.feed.entry;
           data.forEach(d => {
-            temp+="<div class='entry'><div class='row'><div class='col-md-3 title style='font-weight:bold;' '> Name: </div>";
+            temp+="<div class='entry'><div class='row'><div class='col-md-3' style='font-weight:bold;' > Name: </div>";
             temp+="<div class='col-md-9'>"+d.gsx$name.$t+"</div></div>";
-            temp+="<div class='row'><div class='col-md-3 title style='font-weight:bold;''> Location: </div>";
+            temp+="<div class='row'><div class='col-md-3' style=font-weight:bold;'> Location: </div>";
             temp+="<div class='col-md-9'>"+d.gsx$location.$t+"</div></div>";
-            temp+="<div class='row'><div class='col-md-3 title style='font-weight:bold;''> Requirement: </div>";
+            temp+="<div class='row'><div class='col-md-3 title' style='font-weight:bold;'> Requirement: </div>";
             temp+="<div class='col-md-9'>"+d.gsx$requirement.$t+"</div></div>";
-            temp+="<div class='row'><div class='col-md-3 title style='font-weight:bold;''> Details of Attendant </div></div>";
-            temp+="<div class='row'><div class='col-md-3 title style='font-weight:bold;''> Name: </div>";
+            temp+="<div class='row'><div class='col-md-3 title' style='font-weight:bold;'> Details of Attendant </div></div>";
+            temp+="<div class='row'><div class='col-md-3 title' style='font-weight:bold;'> Name: </div>";
             temp+="<div class='col-md-9'>"+d.gsx$nameattendant.$t+"</div></div>";
-            temp+="<div class='row'><div class='col-md-3 title style='font-weight:bold;''> Contact Number: </div>";
+            temp+="<div class='row'><div class='col-md-3 title' style='font-weight:bold;'> Contact Number: </div>";
             temp+="<div class='col-md-9'>"+d.gsx$numberattendant.$t+"</div></div></div><hr>";
           })
           console.log(temp);
