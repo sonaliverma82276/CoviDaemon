@@ -41,3 +41,11 @@ button {
 span {
     color: red;
 }
+
+.entry {
+    padding: 15px;
+}
+
+.title {
+    font-weight: bold;
+}
