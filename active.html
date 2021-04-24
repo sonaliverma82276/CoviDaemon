@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Store HTML form submissions in Google Sheets">
+
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://unpkg.com/prefixfree@1.0.0/prefixfree.min.js"></script>
+
+  <script src="https://wzrd.in/standalone/formdata-polyfill@latest"></script>
+  <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+  <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row heading">
+           <h1>COVID-Urgent</h1> 
+      </div>
+   <hr>
+     <div id="data"></div>
+   </div>
+</body>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+  crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+    fetch("https://spreadsheets.google.com/feeds/list/1Ds8Saqr10MmWJMmrdIlF4EIEM6gMKfZEQMDH1yqwbSs/od6/public/values?alt=json")
+       .then(res => res.json())
+       .then(data => {
+          var temp = "";
+          data = data.feed.entry;
+          data.forEach(d => {
+            temp+="<div class='entry'><div class='row'><div class='col-md-3 title'> Name: </div>";
+            temp+="<div class='col-md-9'>"+d.gsx$name.$t+"</div></div>";
+            temp+="<div class='row'><div class='col-md-3 title'> Location: </div>";
+            temp+="<div class='col-md-9'>"+d.gsx$location.$t+"</div></div>";
+            temp+="<div class='row'><div class='col-md-3 title'> Requirement: </div>";
+            temp+="<div class='col-md-9'>"+d.gsx$requirement.$t+"</div></div>";
+            temp+="<div class='row'><div class='col-md-3 title'> Details of Attendant </div></div>";
+            temp+="<div class='row'><div class='col-md-3 title'> Name: </div>";
+            temp+="<div class='col-md-9'>"+d.gsx$nameattendant.$t+"</div></div>";
+            temp+="<div class='row'><div class='col-md-3 title'> Contact Number: </div>";
+            temp+="<div class='col-md-9'>"+d.gsx$numberattendant.$t+"</div></div></div><hr>";
+          })
+          console.log(temp);
+          document.getElementById("data").innerHTML=temp;
+       })
+  </script>
+</body>
+</html>
+<!-- https://script.google.com/macros/s/AKfycbwWY6J4bXmdDq5KGIbEODTSAEcZuvgX55p9fz-vbfKYfjOnZIq_04Cdbw-IWNCEtGRd/exec -->
