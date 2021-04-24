@@ -1,0 +1,173 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Store HTML form submissions in Google Sheets">
+
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://unpkg.com/prefixfree@1.0.0/prefixfree.min.js"></script>
+
+  <script src="https://wzrd.in/standalone/formdata-polyfill@latest"></script>
+  <script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+  <script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="row heading">
+           <h1>COVID-Urgent</h1> 
+      </div>
+      <div class="row heading des">
+        <p>Mailer Daemon extends its hand to help the community by voicing their needs during this pandemic under the hashtag #CoviDaemon. We request the individuals (related to the patient in any form) to send us their details in the format specified below in order to make the required resources feasible and faster to deliver.</p>
+        <hr>
+   </div>
+   <hr>
+    <form  name="submit-to-google-sheet">
+        <div class="row">
+            <div class="col-md-3 box">
+                <p>Details of Patient</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-3">
+                <label for="Name">Name <span>*</span></label>
+            </div>
+            <div class="col-md-9">
+                <input name="Name" type="text" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="Age">Age <span>*</span></label>
+            </div>
+            <div class="col-md-9">
+                <input name="Age" type="number"  required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="Location">Loaction <span>*</span></label>
+            </div>
+            <div class="col-md-9">
+                <input name="Location" type="text" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="oxygen level">Oxygen Level </label>
+            </div>
+            <div class="col-md-9">
+                <input name="oxygen level" type="text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="Fever">Fever </label>
+            </div>
+            <div class="col-md-9">
+                <input name="Fever" type="text" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="Covid Test">Covid Test <span>*</span></label>
+            </div>
+            <div class="col-md-9">
+                <input name="Covid Test" type="text"  required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="Requirement">Requirement <span>*</span></label>
+            </div>
+            <div class="col-md-9">
+                <input name="Requirement" type="text" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="Hospital">Hospital </label>
+            </div>
+            <div class="col-md-9">
+                <input name="Hospital" type="text"   />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="last updated time">Last Updated Time </label>
+            </div>
+            <div class="col-md-9">
+                <input name="last updated time" type="text"  />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 box">
+                <p>Details of Attendant</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="Name(attendant)">Name <span>*</span></label>
+            </div>
+            <div class="col-md-9">
+                <input name="Name(attendant)" type="text"  required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <label for="Number(attendant)">Contact Number <span>*</span></label>
+            </div>
+            <div class="col-md-9">
+                <input name="Number(attendant)" type="number"  required />
+            </div>
+        </div>
+        <div class="row" style="justify-content: center;">
+            <button type="submit" style="border-radius: 5px;">Submit</button>
+        </div>
+    </form> 
+   </div>
+</body>
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+  integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+  crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+  crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwWY6J4bXmdDq5KGIbEODTSAEcZuvgX55p9fz-vbfKYfjOnZIq_04Cdbw-IWNCEtGRd/exec'
+    const form = document.forms['submit-to-google-sheet']
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => showSuccessMessage(response))
+        .catch(error => showErrorMessage(error))
+    })
+
+
+    function showSuccessMessage (response) {
+      console.log('Success!', response)
+    }
+
+    function showErrorMessage (error) {
+      console.error('Error!', error.message)
+    }
+  </script>
+
+</body>
+</html>
+<!-- https://script.google.com/macros/s/AKfycbwWY6J4bXmdDq5KGIbEODTSAEcZuvgX55p9fz-vbfKYfjOnZIq_04Cdbw-IWNCEtGRd/exec -->

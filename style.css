@@ -1,0 +1,43 @@
+html, body {
+    margin: auto;
+    width: 100%;
+}
+
+body {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.heading {
+    margin-top: 15px;
+}
+
+.row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.box {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+input {
+    width: 100%;
+}
+
+button {
+    width: 150px;
+    padding: 10px;
+    border: none;
+    background:  #669999;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    }
+    button:hover {
+    background:  #a3c2c2;
+    }
+
+span {
+    color: red;
+}
