@@ -26,15 +26,18 @@
         <hr>
    </div>
       <div class="row " style="margin-top: 10px; margin-left: 5px;">
-        <input type="text" id="myInput" class="searchInp" onkeyup="myFunction()" placeholder="Search by Name/Location" title="Type in a location">
+        <input type="text" id="myInput" class="searchInp" onkeyup="myFunction()" placeholder="Search by Name/Location/Requirement">
       <button class="searchbtn" onclick="myFunction()"><i class="fa fa-search"></i></button>
       </div>
         <div style="overflow-x:auto;">
             <table id="myTable" style="width: 100%;">
               <tr class="header">
                 <th >Name</th>
+                <th>Age</th>
+                <th>Oxygen Level</th>
                 <th >City</th>
                 <th >State</th>
+                <th >Name (Attendent)</th>
               <th >Contact</th>
               <th >Requirement</th>
               </tr>
@@ -64,9 +67,11 @@
     
     for (var i = 0; i < rows.length; i++) {
         var firstCol = rows[i].cells[0].textContent.toUpperCase();
-        var secondCol = rows[i].cells[1].textContent.toUpperCase();
-        var thirdCol = rows[i].cells[2].textContent.toUpperCase();
-        if (firstCol.indexOf(filter) > -1 || secondCol.indexOf(filter) > -1 || thirdCol.indexOf(filter) > -1) {
+        var secondCol = rows[i].cells[3].textContent.toUpperCase();
+        var thirdCol = rows[i].cells[4].textContent.toUpperCase();
+        var fourthCol = rows[i].cells[7].textContent.toUpperCase();
+        var fiveCol = rows[i].cells[6].textContent.toUpperCase();
+        if (firstCol.indexOf(filter) > -1 || secondCol.indexOf(filter) > -1 || thirdCol.indexOf(filter) > -1 || fourthCol.indexOf(filter) > -1 || fiveCol.indexOf(filter) > -1   ) {
             rows[i].style.display = "";
         } else {
             rows[i].style.display = "none";
@@ -85,8 +90,11 @@
           data.forEach(d => {
             temp+= "<tr>";
             temp+= "<td>"+d.gsx$nameofpatient.$t+"</td>";
+            temp+= "<td>"+d.gsx$ageofpatient.$t+"</td>";
+            temp+= "<td>"+d.gsx$oxygenlevel.$t+"</td>";
             temp+= "<td>"+d.gsx$city.$t+"</td>";
             temp+= "<td>"+d.gsx$state.$t+"</td>";
+            temp+= "<td>"+d.gsx$nameofattendant.$t+"</td>";
             temp+= "<td class='number'>"+d.gsx$contactnumberofattendant.$t+"<a href='https://wa.me/+91"+d.gsx$contactnumberofattendant.$t+"' target='_blank' style='margin-left:5px; color:green;'><i class='fa fa-whatsapp' style='font-size:1rem;'></i></a></td>";
             temp+= "<td>"+d.gsx$requirement.$t+"</td></tr>";
           })
