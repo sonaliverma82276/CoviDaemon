@@ -47,8 +47,8 @@
               <tr class="header">
                 <th style="width: 25%;" >Name</th>
                 <th style="width: 25%;">Location</th>
-              <th style="width: 25%;">Requirement</th>
               <th style="width: 25%;">Contact</th>
+              <th style="width: 25%;">Requirement</th>
               </tr>
                   <tbody id="data"></tbody>
             </table>
@@ -156,8 +156,8 @@
             temp+= "<tr>";
             temp+= "<td>"+d.gsx$name.$t+"</td>";
             temp+= "<td>"+d.gsx$location.$t+"</td>";
-            temp+= "<td>"+d.gsx$requirement.$t+"</td>";
-            temp+= "<td>"+d.gsx$numberattendant.$t+"</td></tr>";
+            temp+= "<td>"+d.gsx$numberattendant.$t+"</td>";
+            temp+= "<td>"+d.gsx$requirement.$t+"</td></tr>";
           })
           console.log(temp);
           document.getElementById("data").innerHTML=temp;
