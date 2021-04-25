@@ -25,19 +25,9 @@
         <p>Mailer Daemon extends its hand to help the community by voicing their needs during this pandemic under the hashtag #CoviDaemon. We request the individuals (related to the patient in any form) to send us their details in the format specified below in order to make the required resources feasible and faster to deliver.</p>
         <hr>
    </div>
-      <div class="row" style="margin-left: 5px;">
-        <div class="dropdown">
-          <button class="searchbtn dropdown-toggle" type="button" data-toggle="dropdown" id="ok">Search Options
-           <span class="caret"></span></button>
-           <ul class="dropdown-menu" id="butt">
-             <li id="but" onclick="hello()">Name</li>
-             <li id="but" onclick="helloo()">Location</li>
-           </ul>
-         </div>
-      </div>
-      <div class="row" style="margin-top: 10px; margin-left: 5px;">
-        <input type="text" class="searchInp" id="myInputt" onkeyup="myFunctionn()" placeholder="Type Name" title="Type in a name">
-         <input type="text" id="myInput" class="searchInp" onkeyup="myFunction()" placeholder="Type Location" title="Type in a location">
+      <div class="row " style="margin-top: 10px; margin-left: 5px;">
+        <input type="text" id="myInput" class="searchInp" onkeyup="myFunction()" placeholder="Search by Name/Location" title="Type in a location">
+      <button class="searchbtn" onclick="myFunction()"><i class="fa fa-search"></i></button>
       </div>
         <div style="overflow-x:auto;">
             <table id="myTable" style="width: 100%;">
@@ -66,80 +56,22 @@
 
 <script>
   function myFunction() {
-    var input, filter, table, tr, td, i,j,k,txtValue;
+    var filter;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[1];
-      if (td) {
-        txtValue = td.textContent;
-      if(filter==="")
-      {
-        tr[i].style.display = "";
-        
-      }
-      for(j=0;j<filter.length;j++)
-      {
-     
-     
-        if (txtValue.toUpperCase()[j]===filter[j]&&txtValue.toUpperCase()[j-1]===filter[j-1]&&txtValue.toUpperCase()[j-2]===filter[j-2] ) {
-      
-          tr[i].style.display = "";
-        } 
-     
-      else {
-          tr[i].style.display = "none";
-        }
-      }
-      
-      }       
+    var rows = document.querySelector("#data").rows;
+    
+    for (var i = 0; i < rows.length; i++) {
+        var firstCol = rows[i].cells[0].textContent.toUpperCase();
+        var secondCol = rows[i].cells[1].textContent.toUpperCase();
+        if (firstCol.indexOf(filter) > -1 || secondCol.indexOf(filter) > -1) {
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display = "none";
+        }      
     }
   }
-  function myFunctionn() {
-    var input, filter, table, tr, td, i, j,txtValue;
-    input = document.getElementById("myInputt");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
-    tr = table.getElementsByTagName("tr");
-    for (i = 0; i < tr.length; i++) {
-      td = tr[i].getElementsByTagName("td")[0];
-      if (td) {
-        txtValue = td.textContent || td.innerText;
-          if(filter==="")
-      {
-        tr[i].style.display = "";
-        
-      }
-       for(j=0;j<filter.length;j++)
-      {
-     
-        if (txtValue.toUpperCase()[j]===filter[j]&&txtValue.toUpperCase()[j-1]===filter[j-1]&&txtValue.toUpperCase()[j-2]===filter[j-2]) {
-          tr[i].style.display = "";
-        } 
-        
-         else {
-          tr[i].style.display = "none";
-        }
-      }
-      }       
-    }
-  }
-  function hello(){
-  x= document.getElementById("myInputt");
-  x.style.display="block";
-  x= document.getElementById("myInput");
-  x.style.display="none";
-  
-  }
-  function helloo(){
-  x= document.getElementById("myInput");
-  x.style.display="block";
-  x= document.getElementById("myInputt");
-  x.style.display="none";
-  }
-  
+
   </script>
 
 <script>
