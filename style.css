@@ -81,4 +81,7 @@ span {
     .top {
         font-size: 1.65rem;
     }
+    .des p{
+       font-size: 0.75rem;
+    }
 }
