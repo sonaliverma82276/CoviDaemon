@@ -31,6 +31,7 @@ input {
     border: none;
     background-color: #D3D3D3;
     color: white;
+    outline: none;
 }
 
 .searchbtn {
