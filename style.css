@@ -1,6 +1,5 @@
 html, body {
     margin: auto;
-    width: 100%;
 }
 
 body {
@@ -62,6 +61,23 @@ span {
     font-size:2.5rem;
     font-weight: bold;
 }
+
+table, tbody {
+    border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+  }
+  
+  th, td {
+    text-align: center;
+    padding: 8px;
+  }
+
+  .number {
+      display: flex;
+      text-align: left;
+  }
 
 @media (max-width: 768px) {
     #myTable {
