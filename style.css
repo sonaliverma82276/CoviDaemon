@@ -71,17 +71,17 @@ span {
         margin-left: 3px;
     }
     .searchbtn {
-        width: 120px;
-        font-size:12px;
+        width: 130px;
+        font-size:14px;
     }
     .searchInp{
-        width: 160px;
-        font-size:12px;
+        width: 170px;
+        font-size:14px;
     }
     .top {
         font-size: 1.65rem;
     }
     .des p{
-       font-size: 0.75rem;
+       font-size: 0.6rem;
     }
 }
