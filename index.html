@@ -14,7 +14,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
   integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 </head>
 <body>
@@ -24,7 +24,6 @@
       </div>
       <div class="row heading des">
         <p>Mailer Daemon extends its hand to help the community by voicing their needs during this pandemic under the hashtag #CoviDaemon. We request the individuals (related to the patient in any form) to send us their details in the format specified below in order to make the required resources feasible and faster to deliver.</p>
-        <button class="searchbtn"> <a href="https://wa.me/+918750521629" target="_blank" style="text-decoration: none; color: white;" >Connect on Whatsapp</a></button>
         <hr>
    </div>
       <hr>
@@ -156,7 +155,7 @@
             temp+= "<tr>";
             temp+= "<td>"+d.gsx$name.$t+"</td>";
             temp+= "<td>"+d.gsx$location.$t+"</td>";
-            temp+= "<td>"+d.gsx$numberattendant.$t+"</td>";
+            temp+= "<td>"+d.gsx$numberattendant.$t+"<a href='https://wa.me/+91"+d.gsx$numberattendant.$t+"' target='_blank' style='margin-left:5px; color:green;'><i class='fa fa-whatsapp'></i></a></td>";
             temp+= "<td>"+d.gsx$requirement.$t+"</td></tr>";
           })
           console.log(temp);
