@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,118 +20,39 @@
 <body>
     <div class="container">
         <div class="row heading">
-           <h1>COVID-Urgent</h1> 
+           <p class="top">COVID-Urgent</p> 
       </div>
       <div class="row heading des">
         <p>Mailer Daemon extends its hand to help the community by voicing their needs during this pandemic under the hashtag #CoviDaemon. We request the individuals (related to the patient in any form) to send us their details in the format specified below in order to make the required resources feasible and faster to deliver.</p>
-        <button> <a href="./active.html" target="_blank" style="text-decoration: none; color: white;" >Active Queries</a></button>
+        <button class="searchbtn"> <a href="https://wa.me/+918750521629" target="_blank" style="text-decoration: none; color: white;" >Connect on Whatsapp</a></button>
         <hr>
    </div>
-   <hr>
-    <form  name="submit-to-google-sheet">
+      <hr>
+      <div class="row">
+        <div class="dropdown">
+          <button class="searchbtn dropdown-toggle" type="button" data-toggle="dropdown" id="ok">Search Options
+           <span class="caret"></span></button>
+           <ul class="dropdown-menu" id="butt">
+             <li id="but" onclick="hello()">Name</li>
+             <li id="but" onclick="helloo()">Location</li>
+           </ul>
+         </div>
+      </div>
+      <div class="row" style="margin-top: 10px;">
+        <input type="text" class="searchInp" id="myInputt" onkeyup="myFunctionn()" placeholder="Type Name" title="Type in a name">
+         <input type="text" id="myInput" class="searchInp" onkeyup="myFunction()" placeholder="Type Location" title="Type in a location">
+      </div>
         <div class="row">
-            <div class="col-md-3 box">
-                <p>Details of Patient</p>
-            </div>
+            <table id="myTable" style="width: 100%;">
+              <tr class="header">
+                <th style="width: 25%;" >Name</th>
+                <th style="width: 25%;">Location</th>
+              <th style="width: 25%;">Requirement</th>
+              <th style="width: 25%;">Contact</th>
+              </tr>
+                  <tbody id="data"></tbody>
+            </table>
         </div>
-        
-        <div class="row">
-            <div class="col-md-3">
-                <label for="Name">Name <span>*</span></label>
-            </div>
-            <div class="col-md-9">
-                <input name="Name" type="text" required />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label for="Age">Age <span>*</span></label>
-            </div>
-            <div class="col-md-9">
-                <input name="Age" type="number"  required />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label for="Location">Loaction <span>*</span></label>
-            </div>
-            <div class="col-md-9">
-                <input name="Location" type="text" required />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label for="oxygen level">Oxygen Level </label>
-            </div>
-            <div class="col-md-9">
-                <input name="oxygen level" type="text" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label for="Fever">Fever </label>
-            </div>
-            <div class="col-md-9">
-                <input name="Fever" type="text" />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label for="Covid Test">Covid Test <span>*</span></label>
-            </div>
-            <div class="col-md-9">
-                <input name="Covid Test" type="text"  required />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label for="Requirement">Requirement <span>*</span></label>
-            </div>
-            <div class="col-md-9">
-                <input name="Requirement" type="text" required />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label for="Hospital">Hospital </label>
-            </div>
-            <div class="col-md-9">
-                <input name="Hospital" type="text"   />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label for="last updated time">Last Updated Time </label>
-            </div>
-            <div class="col-md-9">
-                <input name="last updated time" type="text"  />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3 box">
-                <p>Details of Attendant</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label for="Name(attendant)">Name <span>*</span></label>
-            </div>
-            <div class="col-md-9">
-                <input name="Name(attendant)" type="text"  required />
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <label for="Number(attendant)">Contact Number <span>*</span></label>
-            </div>
-            <div class="col-md-9">
-                <input name="Number(attendant)" type="number"  required />
-            </div>
-        </div>
-        <div class="row" style="justify-content: center;">
-            <button type="submit" style="border-radius: 5px;">Submit</button>
-        </div>
-    </form> 
    </div>
 </body>
 
@@ -149,26 +69,100 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwWY6J4bXmdDq5KGIbEODTSAEcZuvgX55p9fz-vbfKYfjOnZIq_04Cdbw-IWNCEtGRd/exec'
-    const form = document.forms['submit-to-google-sheet']
-
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => showSuccessMessage(response))
-        .catch(error => showErrorMessage(error))
-    })
-
-
-    function showSuccessMessage (response) {
-      console.log('Success!', response)
+  function myFunction() {
+    var input, filter, table, tr, td, i,j,k,txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        txtValue = td.textContent;
+      if(filter==="")
+      {
+        tr[i].style.display = "";
+        
+      }
+      for(j=0;j<filter.length;j++)
+      {
+     
+     
+        if (txtValue.toUpperCase()[j]===filter[j]&&txtValue.toUpperCase()[j-1]===filter[j-1]&&txtValue.toUpperCase()[j-2]===filter[j-2] ) {
+      
+          tr[i].style.display = "";
+        } 
+     
+      else {
+          tr[i].style.display = "none";
+        }
+      }
+      
+      }       
     }
-
-    function showErrorMessage (error) {
-      console.error('Error!', error.message)
+  }
+  function myFunctionn() {
+    var input, filter, table, tr, td, i, j,txtValue;
+    input = document.getElementById("myInputt");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[0];
+      if (td) {
+        txtValue = td.textContent || td.innerText;
+          if(filter==="")
+      {
+        tr[i].style.display = "";
+        
+      }
+       for(j=0;j<filter.length;j++)
+      {
+     
+        if (txtValue.toUpperCase()[j]===filter[j]&&txtValue.toUpperCase()[j-1]===filter[j-1]&&txtValue.toUpperCase()[j-2]===filter[j-2]) {
+          tr[i].style.display = "";
+        } 
+        
+         else {
+          tr[i].style.display = "none";
+        }
+      }
+      }       
     }
+  }
+  function hello(){
+  x= document.getElementById("myInputt");
+  x.style.display="block";
+  x= document.getElementById("myInput");
+  x.style.display="none";
+  
+  }
+  function helloo(){
+  x= document.getElementById("myInput");
+  x.style.display="block";
+  x= document.getElementById("myInputt");
+  x.style.display="none";
+  }
+  
   </script>
 
+<script>
+    fetch("https://spreadsheets.google.com/feeds/list/1Ds8Saqr10MmWJMmrdIlF4EIEM6gMKfZEQMDH1yqwbSs/od6/public/values?alt=json")
+       .then(res => res.json())
+       .then(data => {
+          var temp = "";
+          data = data.feed.entry;
+          data.forEach(d => {
+            temp+= "<tr>";
+            temp+= "<td>"+d.gsx$name.$t+"</td>";
+            temp+= "<td>"+d.gsx$location.$t+"</td>";
+            temp+= "<td>"+d.gsx$requirement.$t+"</td>";
+            temp+= "<td>"+d.gsx$numberattendant.$t+"</td></tr>";
+          })
+          console.log(temp);
+          document.getElementById("data").innerHTML=temp;
+       })
+  </script>
 </body>
 </html>
 <!-- https://script.google.com/macros/s/AKfycbwWY6J4bXmdDq5KGIbEODTSAEcZuvgX55p9fz-vbfKYfjOnZIq_04Cdbw-IWNCEtGRd/exec -->
