@@ -1,14 +1,22 @@
 html, body {
-    margin: auto;
-}
+    height: 100%;
+    width: 100%;
+  }
 
-body {
-    padding-left: 15px;
-    padding-right: 15px;
-}
 .heading {
     margin-top: 15px;
 }
+
+.main {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.heading img {
+    width:60px;
+    float: left;
+    padding: 5px;
+} 
 
 .row {
     margin-top: 10px;
@@ -83,6 +91,26 @@ table, tbody {
       text-align: left;
   }
 
+  footer {
+    background-color: #3f3f3f;
+    color: #d5d5d5;
+    padding-top: 2rem;
+    bottom: 0;
+    height: 40%;
+  }
+
+  .social a {
+    font-size: 3rem;
+    padding: 2.5rem;
+    color: white;
+  }
+  .social a:hover {
+    color:#d5d5d5;
+  }
+  .social p {
+      font-size: 2.5rem;
+  }
+
 @media (max-width: 768px) {
     #myTable {
         font-size: small;
@@ -99,5 +127,20 @@ table, tbody {
     }
     .des p{
        font-size: 0.7rem;
+    }
+    .heading img {
+        width:40px;
+        float: left;
+        padding: 5px;
+    } 
+    .social a {
+        font-size:  2.2rem;
+        padding: 1.2rem;
+      }
+      .social p {
+        font-size: 2rem;
+    }
+    footer {
+        height: 30%;
     }
 }
