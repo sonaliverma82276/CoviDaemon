@@ -14,23 +14,52 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
   integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+  <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
 <body>
+
+  <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#">CoviDaemon</a>	
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+      <span class="navbar-toggler-icon">
+      </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+        <a onclick="filter(this.id)" id="oxygen" class="nav-link">Oxygen</a>
+      </li>
+      <li class="nav-item">
+        <a onclick="filter(this.id)" id="Remdesivir" class="nav-link">Remdesivir</a>
+      </li>
+      <li class="nav-item">
+        <a onclick="filter(this.id)" id="plasma" class="nav-link">Plasma</a>
+      </li>
+      <li class="nav-item">
+        <a onclick="filter(this.id)" id="other" class="nav-link">Other</a>
+      </li>
+      </ul>
+    </div>
+    </div>
+  </nav>
+
     <div class="main">
         <div class="heading">
           <img src="./logo.jpg"/>
            <p class="top">CoviDaemon</p> 
       </div>
       <div class="heading des">
-        <p>Mailer Daemon extends its hand to help the community by voicing needs of patients during this pandemic under the hashtag #CoviDaemon. We request the individuals (related to the patient in any form) to send us their details in the format specified below in order to make the required resources feasible and faster to deliver.</p>
+        <p>Mailer Daemon extends its hand to help the community by voicing their needs during this pandemic under the hashtag #CoviDaemon. We request the individuals (related to the patient in any form) to send us their details in the format specified below in order to make the required resources feasible and faster to deliver.</p>
         <hr>
    </div>
       <div class="row " style="margin-top: 10px; margin-left: 5px;">
-        <input type="text" id="myInput" class="searchInp" onkeyup="myFunction()" placeholder="Search by Name/Location/Requirement">
+        <input type="text" id="myInput" class="searchInp" onkeyup="myFunction()" placeholder="Search by Name/Location">
       <button class="searchbtn" onclick="myFunction()"><i class="fa fa-search"></i></button>
       </div>
+      
         <div style="overflow-x:auto; margin-bottom: 30px;">
             <table id="myTable" style="width: 100%;">
               <tr class="header">
@@ -41,7 +70,7 @@
                 <th >State</th>
                 <th >Name (Attendent)</th>
               <th >Contact</th>
-              <th >Requirement</th>
+              <th id="req" style="display: none;" >Requirement</th>
               </tr>
                   <tbody id="data"></tbody>
             </table>
@@ -62,6 +91,39 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script>
+  const navLinks = document.querySelectorAll('.nav-item')
+const menuToggle = document.getElementById('navbarResponsive')
+const bsCollapse = new bootstrap.Collapse(menuToggle)
+navLinks.forEach((l) => {
+    l.addEventListener('click', () => { bsCollapse.toggle() })
+})
+
+  function filter(id) {
+    var filter;
+    filter = id.toUpperCase();
+    var rows = document.querySelector("#data").rows;
+    
+    for (var i = 0; i < rows.length; i++) {
+        var val = rows[i].cells[7].textContent.toUpperCase();
+        if(filter=="OTHER") {
+          if (val!="PLASMA" && val!="REMDESIVIR" && val!="OXYGEN") {
+              rows[i].style.display = "";
+              rows[i].cells[7].style.display="";
+              document.getElementById("req").style.display="";
+          } else {
+              rows[i].style.display = "none";
+          }   
+        }
+        else {
+        if (val.indexOf(filter) > -1) {
+            rows[i].style.display = "";
+        } else {
+            rows[i].style.display = "none";
+        }
+      }      
+    }
+  }
+
   function myFunction() {
     var filter;
     input = document.getElementById("myInput");
@@ -72,9 +134,8 @@
         var firstCol = rows[i].cells[0].textContent.toUpperCase();
         var secondCol = rows[i].cells[3].textContent.toUpperCase();
         var thirdCol = rows[i].cells[4].textContent.toUpperCase();
-        var fourthCol = rows[i].cells[7].textContent.toUpperCase();
         var fiveCol = rows[i].cells[6].textContent.toUpperCase();
-        if (firstCol.indexOf(filter) > -1 || secondCol.indexOf(filter) > -1 || thirdCol.indexOf(filter) > -1 || fourthCol.indexOf(filter) > -1 || fiveCol.indexOf(filter) > -1   ) {
+        if (firstCol.indexOf(filter) > -1 || secondCol.indexOf(filter) > -1 || thirdCol.indexOf(filter) > -1 || fiveCol.indexOf(filter) > -1   ) {
             rows[i].style.display = "";
         } else {
             rows[i].style.display = "none";
@@ -98,8 +159,8 @@
             temp+= "<td>"+d.gsx$city.$t+"</td>";
             temp+= "<td>"+d.gsx$state.$t+"</td>";
             temp+= "<td>"+d.gsx$nameofattendant.$t+"</td>";
-            temp+= "<td class='number'>"+d.gsx$contactnumberofattendant.$t+"<a href='https://wa.me/+91"+d.gsx$contactnumberofattendant.$t+"' target='_blank' style='margin-left:5px; color:green;'><i class='fa fa-whatsapp' style='font-size:1rem;'></i></a></td>";
-            temp+= "<td>"+d.gsx$requirement.$t+"</td></tr>";
+            temp+= "<td class='number'>"+d.gsx$contactnumberofattendant.$t+"<a href='https://wa.me/+91"+d.gsx$contactnumberofattendant.$t+"' target='_blank' style='margin-left:5px; color:green;'><i class='fab fa-whatsapp' style='font-size:1rem;'></i></a></td>";
+            temp+= "<td  style='display: none;'>"+d.gsx$requirement.$t+"</td></tr>";
           })
           document.getElementById("data").innerHTML=temp;
        })
