@@ -150,6 +150,7 @@
           var temp = "";
           data = data.feed.entry;
           data.forEach(d => {
+            if(d.gsx$status.$t.toUpperCase()!="COMPLETED") {
             temp+= "<tr>";
             temp+= "<td>"+d.gsx$nameofpatient.$t+"</td>";
             temp+= "<td>"+d.gsx$ageofpatient.$t+"</td>";
@@ -159,6 +160,7 @@
             temp+= "<td>"+d.gsx$nameofattendant.$t+"</td>";
             temp+= "<td class='number'>"+d.gsx$contactnumberofattendant.$t+"<a href='https://wa.me/+91"+d.gsx$contactnumberofattendant.$t+"' target='_blank' style='margin-left:5px; color:green;'><i class='fab fa-whatsapp' style='font-size:1rem;'></i></a></td>";
             temp+= "<td  style='display: none;'>"+d.gsx$requirement.$t+"</td></tr>";
+            }
           })
           document.getElementById("data").innerHTML=temp;
        })
