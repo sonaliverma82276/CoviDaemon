@@ -19,13 +19,13 @@ html, body {
   }
 
 .main {
-    margin-top:60px;
+    padding-top:65px;
     padding-left: 15px;
     padding-right: 15px;
 }
 
-.heading img {
-    width:60px;
+.logo {
+    width:35px;
     float: left;
     padding: 5px;
 } 
@@ -140,8 +140,8 @@ table, tbody {
     .des p{
        font-size: 0.7rem;
     }
-    .heading img {
-        width:40px;
+    .logo {
+        width:35px;
         float: left;
         padding: 5px;
     } 
