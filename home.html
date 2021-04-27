@@ -41,6 +41,9 @@
       <li class="nav-item">
         <a onclick="filter(this.id)" id="other" class="nav-link">Other</a>
       </li>
+      <li class="nav-item">
+        <a onclick="filter(this.id)" id="" class="nav-link">All</a>
+      </li>
       </ul>
     </div>
     </div>
@@ -93,13 +96,21 @@
 // const bsCollapse = new bootstrap.Collapse(menuToggle)
 // navLinks.forEach((l) => {
 //     l.addEventListener('click', () => { bsCollapse.toggle() })
-// })
+// });
+
+var cur="";
 
   function filter(id) {
     var filter;
     filter = id.toUpperCase();
+    cur=id.toUpperCase();
+    console.log(cur);
     var rows = document.querySelector("#data").rows;
     document.getElementById("filterp").innerHTML="*Filter by "+id;
+    if(cur==""){
+      document.getElementById("filterp").style.display="none";
+    }
+    else
     document.getElementById("filterp").style.display="";
     for (var i = 0; i < rows.length; i++) {
         var val = rows[i].cells[7].textContent.toUpperCase();
@@ -123,12 +134,16 @@
   }
 
   function myFunction() {
-    var filter;
+    var filter; console.log(cur);
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     var rows = document.querySelector("#data").rows;
-    document.getElementById("filterp").style.display="none";
     for (var i = 0; i < rows.length; i++) {
+      var fCol = rows[i].cells[7].textContent.toUpperCase();
+      if(fCol!=cur && cur!="" ){
+        rows[i].style.display = "none";
+        continue;
+      }
         var firstCol = rows[i].cells[0].textContent.toUpperCase();
         var secondCol = rows[i].cells[3].textContent.toUpperCase();
         var thirdCol = rows[i].cells[4].textContent.toUpperCase();
